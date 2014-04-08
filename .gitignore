@@ -1,0 +1,16 @@
+.idea/.name
+.idea/compiler.xml
+.idea/copyright/profiles_settings.xml
+.idea/encodings.xml
+.idea/libraries/Maven__com_google_code_gson_gson_2_2_4.xml
+.idea/libraries/Maven__com_xalero_DominionCommons_1_0_SNAPSHOT.xml
+.idea/libraries/Maven__junit_junit_4_10.xml
+.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_1.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/scopes/scope_settings.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.settings/org.eclipse.core.resources.prefs
+DominionServer.iml
+nb-configuration.xml
