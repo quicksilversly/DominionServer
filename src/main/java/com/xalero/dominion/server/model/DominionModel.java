@@ -494,7 +494,7 @@ public final class DominionModel implements IUniqueObservable {
      * @param playerId the id of the player
      * @return a result object.
      */
-    public Result endTurn(long playerId) {
+    public Result endTurn(Long playerId) {
 
         // check for ending turn
         Player curPlayer = players.get(playerTurn);

@@ -33,6 +33,7 @@ import com.xalero.dominion.commons.protocol.dtos.PlayerGameDto;
 import com.xalero.dominion.commons.utils.Result;
 import com.xalero.dominion.server.services.BuyCardService;
 import com.xalero.dominion.server.services.CreateGameService;
+import com.xalero.dominion.server.services.EndTurnService;
 import com.xalero.dominion.server.services.JoinGameService;
 import com.xalero.dominion.server.services.KingdomCardService;
 import com.xalero.dominion.server.services.SocketService;
@@ -99,7 +100,7 @@ public class DominionServerThread extends Thread {
                 										 buyCardDto.getPlayerGameDto().getPlayerDto().getName() + 
                 										 " just bought a " + buyCardDto.getCardName());
                 	
-                	Collection<Socket> playerSockets = SocketService.playerSockets(buyCardDto.getPlayerGameDto());
+                	Collection<Socket> playerSockets = SocketService.playerSockets(buyCardDto.getPlayerGameDto().getGameId());
                 	sendResponses(displayResponse, playerSockets);
                 } else {
                 	displayResponse = new DominionMessage(DominionEvent.DISPLAY,
@@ -107,13 +108,22 @@ public class DominionServerThread extends Thread {
                 	sendResponse(displayResponse, socket);
                 }
                 break;
-            case END_TURN:
-//                PlayerGameDto playerGameDto = gson.fromJson(request.getValue(), PlayerGameDto.class);
-//                result = dominionModel.endTurn(playerIdDto.getPlayerId());
-//                resultStr = gson.toJson(result);
-//                message = new DominionMessage(DominionEvent.DISPLAY, "Player Turn: " + dominionModel.getCurrentPlayer().getPlayerName());
-//                dominionModel.notifyObservers(new Gson().toJson(message));
-//                dominionModel.notifyObservers();
+            case END_TURN: // NEED TO TEST
+            	playerGameDto = gson.fromJson(request.getValue(), PlayerGameDto.class);
+            	boolean turnEnded = EndTurnService.endTurn(playerGameDto);
+            	
+            	displayResponse = null;
+            	if (turnEnded) {
+            		displayResponse = new DominionMessage(DominionEvent.DISPLAY, "You just ended your turn");
+            		sendResponse(displayResponse, socket);
+            		
+            		displayResponse = new DominionMessage(DominionEvent.DISPLAY, playerGameDto.getPlayerDto().getName() + " just ended their turn");
+            		Collection<Socket> playerSockets = SocketService.playerSocketsExcept(playerGameDto.getGameId(), playerGameDto.getPlayerDto().getPlayerId());
+            		sendResponses(displayResponse, playerSockets);
+            	} else {
+            		displayResponse = new DominionMessage(DominionEvent.DISPLAY, "You cannot end your turn");
+            		sendResponse(displayResponse, socket);
+            	}
                 break;
             case KINGDOM_CARD_LIST: // NEED TO TEST
             	gameId = gson.fromJson(request.getValue(), Long.class);

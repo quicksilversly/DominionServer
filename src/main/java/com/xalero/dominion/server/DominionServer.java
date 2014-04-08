@@ -17,7 +17,6 @@ package com.xalero.dominion.server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +28,6 @@ public class DominionServer {
 
     private final int port;
     private boolean running;
-    private Thread serverThread;
 
     public DominionServer(int port) {
         this.port = port;
@@ -45,9 +43,7 @@ public class DominionServer {
         running = true;
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             while (running) {
-                Socket socket = serverSocket.accept();
-                socket.setKeepAlive(true);
-                new DominionServerThread(socket).start();
+                new DominionServerThread(serverSocket.accept()).start();
             }
         } catch (IOException ex) {
             Logger.getLogger(DominionServer.class.getName()).log(Level.SEVERE, null, ex);
