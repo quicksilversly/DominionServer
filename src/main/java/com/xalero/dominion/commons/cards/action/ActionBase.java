@@ -10,5 +10,5 @@ public interface ActionBase {
 	public int getPlusDraws();
 	public int getPlusTreasures();
 	public int getPlusActions();
-	public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId);
+	public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId);
 }
