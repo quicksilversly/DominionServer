@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
@@ -40,13 +41,13 @@ public class Player {
     private static final Logger log = LogManager.getLogManager().getLogger(Player.class.getName());
 
     /**
-     * @param playerInfo Player information to transfer from the controller to
+     * @param playerDto Player information to transfer from the controller to
      * the model.
      * @param turnNumber
      */
-    public Player(PlayerDto playerInfo, int turnNumber, Socket playerSocket) {
-        this.displayName = playerInfo.getName();
-        this.playerType = playerInfo.getPlayerType();
+    public Player(PlayerDto playerDto, int turnNumber, Socket playerSocket) {
+        this.displayName = playerDto.getName();
+        this.playerType = playerDto.getPlayerType();
 
         this.deck = new ArrayList<>();
         this.hand = new ArrayList<>();
@@ -60,6 +61,8 @@ public class Player {
 
         this.chancellorEffect = false;
         this.playerSocket = playerSocket;
+        
+        this.uniqueIdentifier = new Random().nextLong();
     }
 
     /**

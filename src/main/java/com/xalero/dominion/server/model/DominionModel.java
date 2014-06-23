@@ -163,8 +163,6 @@ public final class DominionModel implements IUniqueObservable {
         result.setMessage("Game started!");
         notifyObservers();
 
-        DominionMessage message = new DominionMessage(DominionEvent.DISPLAY, "Game started!");
-        notifyObservers(new Gson().toJson(message));
         return result;
     }
 
@@ -295,11 +293,14 @@ public final class DominionModel implements IUniqueObservable {
      * Adds a player to the current game.
      * @param playerDto the basic information for creating a player
      * @param playerSocket the socket used to communicate with the player
-     * @return true if the player was added and false otherwise
+     * @return the player id
      */
-    public boolean addPlayer(PlayerDto playerDto, Socket playerSocket) {
+    public long addPlayer(PlayerDto playerDto, Socket playerSocket) {
     	Player playerToAdd = new Player(playerDto, players.size() + 1, playerSocket);
-    	return players.add(playerToAdd);
+    	if (players.add(playerToAdd)) {
+    		return playerToAdd.getUniqueIdentifier();
+    	}
+    	return -1;
     }
     
     /**
@@ -589,18 +590,5 @@ public final class DominionModel implements IUniqueObservable {
     }
 
     public void notifyObserversCardPlayed(String cardName, Player player) {
-        DominionMessage displayEvent = new DominionMessage(DominionEvent.DISPLAY, cardName + " played by " + player.getPlayerName());
-        Gson gson = new GsonBuilder().create();
-        String jsonDisplayEvent = gson.toJson(displayEvent);
-        for (Entry<Long, IUniqueObserver> obs : observers.entrySet()) {
-            if (!obs.getKey().equals(player.getUniqueIdentifier())) {
-                obs.getValue().update(jsonDisplayEvent);
-            }
-        }
-
-        displayEvent.setValue("You just played a " + cardName);
-        observers.get(player.getUniqueIdentifier()).update(gson.toJson(displayEvent));
-
-        notifyObservers();
     }
 }

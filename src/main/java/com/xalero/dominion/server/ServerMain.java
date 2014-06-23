@@ -15,6 +15,8 @@
  */
 package com.xalero.dominion.server;
 
+import java.io.IOException;
+
 /**
  *
  * @author jonathan
@@ -23,7 +25,11 @@ public class ServerMain {
 
     public static void main(String args[]) {
         if (args != null && args.length > 0 && args[0] != null) {
-            new DominionServer(args[0]).startServer();
+            try {
+				new DominionServer(Integer.parseInt(args[0])).startServer();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
         }
     }
 }

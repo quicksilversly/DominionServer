@@ -3,6 +3,7 @@ package com.xalero.dominion.server.services;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import com.xalero.dominion.server.manager.GameManager;
 import com.xalero.dominion.server.model.DominionModel;
@@ -21,14 +22,14 @@ public class SocketService {
 		return playerSockets;
 	}
 	
-	public static synchronized Collection<Socket> playerSocketsExcept(Long gameId, Long playerId) {
+	public static synchronized Collection<Socket> playerSocketsExcept(Long gameId, 
+																	  Long playerId) {
 		DominionModel dominionModel = GameManager.getGame(gameId);
-		Collection<Player> players = dominionModel.getPlayers();
-		Collection<Socket> playerSockets = new ArrayList<>();
-		for (Player player: players) {
-			if (player.getUniqueIdentifier().equals(playerId)) continue;
-			playerSockets.add(player.getPlayerSocket());
-		}
+		Collection<Socket> playerSockets = dominionModel.getPlayers().stream()
+												  			.filter(p -> p.getUniqueIdentifier() != playerId)
+										  				    .map(p -> p.getPlayerSocket())
+										  				    .collect(Collectors.toList());
+
 		return playerSockets;
 	}
 }

@@ -10,6 +10,7 @@ public enum CardSet {
 		this.displayName = displayName;
 	}
 	
+	@Override
 	public String toString() {
 		return displayName;
 	}

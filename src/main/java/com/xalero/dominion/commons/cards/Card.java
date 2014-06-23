@@ -20,8 +20,6 @@ public abstract class Card implements CardBase, VictoryBase, TreasureBase {
 		this.selected.set(selected);
 	}	
 	
-	public abstract int getCost();
-
 	@Override
 	public int getPoints() throws NoSuchMethodException {
 		if (!this.isVictory()) {

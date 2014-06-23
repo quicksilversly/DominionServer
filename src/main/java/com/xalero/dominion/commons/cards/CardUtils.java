@@ -39,10 +39,11 @@ public class CardUtils {
 		return cardsRandomlySelected;
 	}
 	
+	
 	public static Card getRandomCard(Card[] completeList) {
 		List<Card> completeCardList = Arrays.asList(completeList);
 		Random rand = new Random();
-		List<Card> cardsToChooseFrom = new LinkedList<Card>(Arrays.asList(CardFactory.getBaseKingdomCards()));
+		List<Card> cardsToChooseFrom = new LinkedList<>(Arrays.asList(CardFactory.getBaseKingdomCards()));
 		cardsToChooseFrom.removeAll(completeCardList);
 		Card replacement = cardsToChooseFrom.get(rand.nextInt(cardsToChooseFrom.size()));
 		return replacement;

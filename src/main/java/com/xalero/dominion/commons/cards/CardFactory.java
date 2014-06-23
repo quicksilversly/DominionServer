@@ -14,8 +14,6 @@ public class CardFactory {
 
     private static final CardFactory cardFactory = new CardFactory();
     private static final int numBaseKingdomCards = 25;
-    private static final String baseCardsPath = "dominion/application/cards/base/";
-
     // Original Dominion Cards
     public static Card createCard(String card) {
         // big switch statement for creating a card
@@ -160,6 +158,7 @@ public class CardFactory {
             id = 1;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.SIX;
         }
@@ -185,7 +184,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -242,6 +241,7 @@ public class CardFactory {
             id = 2;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FOUR;
         }
@@ -267,7 +267,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -339,7 +339,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -379,6 +379,7 @@ public class CardFactory {
             id = 4;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.THREE;
         }
@@ -404,7 +405,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -440,6 +441,7 @@ public class CardFactory {
             id = 5;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.TWO;
         }
@@ -465,7 +467,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -505,6 +507,7 @@ public class CardFactory {
             id = 6;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FIVE;
         }
@@ -530,7 +533,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -566,6 +569,7 @@ public class CardFactory {
             id = 7;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FOUR;
         }
@@ -591,7 +595,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -633,6 +637,7 @@ public class CardFactory {
             id = 8;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FIVE;
         }
@@ -658,7 +663,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -691,6 +696,7 @@ public class CardFactory {
             id = 9;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FIVE;
         }
@@ -716,7 +722,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -748,6 +754,7 @@ public class CardFactory {
             id = 10;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FIVE;
         }
@@ -773,7 +780,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             return null;
         }
 
@@ -790,6 +797,7 @@ public class CardFactory {
             id = 11;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FIVE;
         }
@@ -815,7 +823,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -849,6 +857,7 @@ public class CardFactory {
             id = 12;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FOUR;
         }
@@ -874,7 +883,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             return null;
         }
 
@@ -896,6 +905,7 @@ public class CardFactory {
             id = 13;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FIVE;
         }
@@ -921,7 +931,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -976,6 +986,7 @@ public class CardFactory {
             id = 14;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.TWO;
         }
@@ -1006,7 +1017,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             return null;
         }
 
@@ -1023,6 +1034,7 @@ public class CardFactory {
             id = 15;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FOUR;
         }
@@ -1048,7 +1060,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -1084,7 +1096,8 @@ public class CardFactory {
             super();
             id = 16;
         }
-
+        
+        @Override
         public int getCost() {
             return DominionConstants.FOUR;
         }
@@ -1110,7 +1123,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -1171,6 +1184,7 @@ public class CardFactory {
             id = 17;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FOUR;
         }
@@ -1196,7 +1210,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -1227,6 +1241,7 @@ public class CardFactory {
             id = 18;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FOUR;
         }
@@ -1252,7 +1267,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -1285,6 +1300,7 @@ public class CardFactory {
             id = 19;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FOUR;
         }
@@ -1310,7 +1326,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             return null;
         }
 
@@ -1332,6 +1348,7 @@ public class CardFactory {
             id = 20;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FOUR;
         }
@@ -1357,7 +1374,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -1396,6 +1413,7 @@ public class CardFactory {
             id = 21;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.THREE;
         }
@@ -1421,7 +1439,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -1452,6 +1470,7 @@ public class CardFactory {
             id = 22;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FIVE;
         }
@@ -1477,7 +1496,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -1512,6 +1531,7 @@ public class CardFactory {
             id = 23;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.THREE;
         }
@@ -1537,7 +1557,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -1569,6 +1589,7 @@ public class CardFactory {
             id = 24;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.THREE;
         }
@@ -1594,7 +1615,7 @@ public class CardFactory {
         }
 
         @Override
-        public Result playCard(List<String> parameters, DominionModel dominionModel, long playerId) {
+        public Result playCard(List<String> parameters, DominionModel dominionModel, Long playerId) {
             Player player = dominionModel.getPlayerById(playerId);
             Result result = player.canPlayAction(this);
             if (!result.isSuccess()) {
@@ -1772,6 +1793,7 @@ public class CardFactory {
             id = 31;
         }
 
+        @Override
         public int getCost() {
             return DominionConstants.FOUR;
         }

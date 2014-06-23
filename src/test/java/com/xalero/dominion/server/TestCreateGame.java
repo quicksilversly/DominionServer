@@ -31,7 +31,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.xalero.dominion.commons.protocol.DominionEvent;
 import com.xalero.dominion.commons.protocol.DominionMessage;
-import com.xalero.dominion.commons.protocol.dtos.GameSettingsDto;
+//import com.xalero.dominion.commons.protocol.dtos.GameSettingsDto;
 
 /**
  *
@@ -51,7 +51,7 @@ public class TestCreateGame {
 			}
 		}).start();
 
-		GameSettingsDto gameSettingsDto = new GameSettingsDto();
+		//GameSettingsDto gameSettingsDto = new GameSettingsDto();
 
 		List<String> cards = new ArrayList<>();
 		cards.add("adventurer");
@@ -65,28 +65,28 @@ public class TestCreateGame {
 		cards.add("throne room");
 		cards.add("spy");
 
-		gameSettingsDto.setGameCards(cards);
-		gameSettingsDto.setNumCompPlayers(2);
-		gameSettingsDto.setNumHumanPlayers(2);
+		//gameSettingsDto.setGameCards(cards);
+		//gameSettingsDto.setNumCompPlayers(2);
+		//gameSettingsDto.setNumHumanPlayers(2);
 
 		Gson gson = new GsonBuilder().create();
-		String jsonSettings = gson.toJson(gameSettingsDto);
+		//String jsonSettings = gson.toJson(gameSettingsDto);
 
-		DominionMessage request = new DominionMessage(
-				DominionEvent.CREATE_GAME, jsonSettings);
-		String jsonRequest = gson.toJson(request);
+		//DominionMessage request = new DominionMessage(
+				//DominionEvent.CREATE_GAME, jsonSettings);
+		//String jsonRequest = gson.toJson(request);
 
 		try (Socket socket = new Socket("localhost", port);
 				PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
 				BufferedReader br = new BufferedReader(new InputStreamReader(
 						socket.getInputStream()))) {
-			pw.println(jsonRequest);
+			//pw.println(jsonRequest);
 			pw.flush();
 			String response = br.readLine();
 
 			assertNotNull(response);
 		}
 
-		server.stopServer();
+		//server.stopServer();
 	}
 }

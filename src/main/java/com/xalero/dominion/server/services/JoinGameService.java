@@ -10,7 +10,7 @@ import com.xalero.dominion.server.model.DominionModel;
 
 public class JoinGameService {
 
-	public static synchronized boolean joinGame(PlayerGameDto playerGameDto, Socket playerSocket) {
+	public static synchronized long joinGame(PlayerGameDto playerGameDto, Socket playerSocket) {
 		DominionModel dominionModel = GameManager.getGame(playerGameDto
 				.getGameId());
 		PlayerDto playerDto = playerGameDto.getPlayerDto();
@@ -22,15 +22,15 @@ public class JoinGameService {
 		boolean gameStarted = dominionModel.gameStarted();
 
 		if (gameStarted || (numPlayers >= maxHumanPlayers + maxCompPlayers)) {
-			return false;
+			return -1;
 		}
 		if ((playerDto.getPlayerType().equals(PlayerType.COMPUTER) && 
 				dominionModel.getNumCompPlayers() >= maxCompPlayers) || 
 			(playerDto.getPlayerType().equals(PlayerType.HUMAN) && 
 				dominionModel.getNumHumanPlayers() >= maxHumanPlayers)) {
-			return false;
+			return -1;
 		}
 
-		return dominionModel.addPlayer(playerGameDto.getPlayerDto(), playerSocket);
+		return dominionModel.addPlayer(playerDto, playerSocket); 
 	}
 }
